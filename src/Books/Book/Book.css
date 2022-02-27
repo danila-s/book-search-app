@@ -1,10 +1,28 @@
 .book {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 302px;
-    height: 300px;
+    height: auto;
     background-color: lightgray;
     margin: 30px;
+    padding: 20px 0px;
+}
 
+.categories{
+    text-decoration-line :underline;
+    opacity: 60%;
+    margin-bottom: 10px;
+}
+
+.title-book{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.book:hover{
+    position: relative;
+    bottom : 10px ; 
+    right : 10px; 
+}
+
+.authors {
+    opacity: 60%;
 }
