@@ -1,0 +1,9 @@
+.book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 302px;
+    height: 300px;
+    background-color: aquamarine;
+
+}
