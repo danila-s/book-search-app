@@ -3,13 +3,21 @@
 }
 
 .image {
-    width: 60%;
+    width: 40%;
 }
 
 .image-container {
-    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 40%;
-    padding: 10px;
+    padding: 70px;
+}
+
+.second-image-container {
+    background-color: lightgray;
+    width: 70%;
+    padding: 15px;
 }
 
 .info-container{
@@ -28,6 +36,7 @@
 
 .focus-title {
     display: flex;
+    justify-content: flex-start;
     font-weight: bold;
     font-size: 30px;
     float: left;
@@ -46,4 +55,11 @@
     text-decoration-line :underline;
     opacity: 60%;
     margin: 15px 0px;
+}
+
+.back-button {
+    background-color: lightcyan;
+    background: 0;
+    width: 250px;
+    margin-top: 30px;
 }

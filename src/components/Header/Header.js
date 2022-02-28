@@ -2,7 +2,8 @@ import React from "react";
 import './Header.css'
 import {getBookList} from '../../api/api'
 import { connect } from "react-redux";
-import {searchBooks , focus} from '../../redux/actions'
+import {searchBooks , focus , changeLoading , actualInfo} from '../../redux/actions'
+
 
 
 class Header extends React.Component{
@@ -20,15 +21,29 @@ class Header extends React.Component{
         this.setState({string : e.target.value})
     }
 
+    actualInfo = () => {
+        const {string , focusCategory , sorting} = this.state;
+        const arr = [string , focusCategory , sorting];
+        this.props.actualInfo(arr);
+    }
+
     getNewBooks = () => {
         
         const {string , focusCategory , sorting} = this.state
-        getBookList(string , focusCategory , sorting) 
+        const {startIndex , results} = this.props
+        this.props.changeLoading();
+        getBookList(string , focusCategory , sorting , startIndex , results) 
         .then(data => {
             this.setState({totalItems : data.totalItems})
             this.props.searchBooks(data.items)
-            this.props.focus('')
+            this.props.focus('');
+            this.actualInfo();
+            this.props.changeLoading();
+        }).catch(err => {
+            console.log(err);
+            alert('Что-то пошло не так , обновите страницу.');
         })
+        
         
     }
 
@@ -50,26 +65,37 @@ class Header extends React.Component{
    
 
     render(){
-        const{categories , sorting , totalItems , sortingArr} = this.state
+        const{categories , totalItems , sortingArr} = this.state
         return(
             <header>
                 <p className="title">Search for books</p>
-                <input onChange={this.changeInput}/> 
-                <button onClick={this.getNewBooks}></button>
+                <div className="search-container">
+                    <input type="search" onChange={this.changeInput } onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                        this.getNewBooks();
+                        }
+                    }}/>
+                    <button onClick={this.getNewBooks}></button>
+                </div>    
                 <div className="selects">
-                    Categories<select onChange={this.newCategory}>
-                        {categories.map((item , index) => {
-                            return <option value={item} key={index}>{item}</option>
-                        })}
-
-                    </select>
-                    Sorting by<select onChange={this.newSorting}>
-                        {sortingArr.map((item , index) => {
-                            return <option value={item} key={index}>{item}</option>
-                        })}
-                    </select>
+                    <div className="select">
+                        <p className="select-title">Categories</p>
+                        <select onChange={this.newCategory}>
+                            {categories.map((item , index) => {
+                                return <option value={item} key={index}>{item}</option>
+                            })}
+                        </select>
+                    </div>
+                    <div className="select">
+                        <p className="select-title">Sorting by</p>
+                        <select onChange={this.newSorting}>
+                            {sortingArr.map((item , index) => {
+                                return <option value={item} key={index}>{item}</option>
+                            })}    
+                        </select>
+                    </div>
                 </div>
-                <p>{totalItems}</p>
+                <p className="items">{totalItems}</p>
             </header>
         )
     }
@@ -78,12 +104,16 @@ class Header extends React.Component{
 
 const mapDispatchToProps = (dispatch) => ({
     searchBooks: (data) => dispatch(searchBooks(data)),
-    focus : (id) => dispatch(focus(id))
+    focus : (id) => dispatch(focus(id)),
+    changeLoading : () => dispatch(changeLoading()),
+    actualInfo : (info) => dispatch(actualInfo(info))
   });
   
   const mapStateToProps = (state) => {
     return {
-      booksArr : state.booksArr
+      booksArr : state.booksArr,
+      startIndex : state.startIndex ,
+      results : state.results
     };
   };
   

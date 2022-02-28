@@ -6,7 +6,8 @@
 header {
     
     background: url('https://lmayer.ru/wp-content/uploads/2018/12/book-1149031_1920.jpg');
-    padding: 60px 0px;
+    padding-top: 60px 0px;
+    padding-bottom: 40px;
     
 }
 
@@ -17,8 +18,7 @@ header {
 
 input {
     width: 700px;
-    height: 30px;
-    margin: 50px 0px ;
+    height: 30px;   
 }
 
 select:first-child {
@@ -26,7 +26,57 @@ select:first-child {
 }
 
 button {
-    background: url('https://mnogoblog.ru/wp-content/uploads/2013/12/lupa.gif');
-    width: 50px;
-    height: 50px;
+    background: url('https://appgameanswers.com/wp-content/uploads/2014/05/emojipop0367.jpg');
+    width: 40px;
+    height: 40px;
+}
+
+.select {
+    display: flex;
+    color: white;
+    font-weight: bold;
+}
+
+.select:first-child{
+    margin-right: 30px;
+}
+.selects {
+    display: flex;
+    justify-content: center;
+}
+
+.items {
+    margin-top: 10px;
+}
+
+.select-title {
+    margin-right: 10px;
+}
+
+.search-container {
+    margin: 50px , 0px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@Media (max-width :761px){
+    input {
+        width: 400px;
+        height: 30px;   
+    }
+}
+
+@Media (max-width :464px){
+    input {
+        width: 300px;
+        height: 30px;   
+    }
+}
+
+@Media (max-width :300px){
+    .selects {
+        display: block;
+        
+    }
 }

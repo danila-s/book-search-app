@@ -2,22 +2,24 @@ import React from 'react'
 import Header from '../components/Header/Header'
 import {connect} from 'react-redux'
 import Books from '../Books/Books'
-import { BrowserRouter } from 'react-router-dom';
+import './MainPage.css'
+
 
 
 class MainPage extends React.Component {
 
     render () {
-        const booksArr = this.props
+        const {booksArr , isLoad} = this.props
+        
         return (
-            
             <div>
+              {isLoad ?  <div className='loading'>
+                <p className='loading-text'>Loading ...</p>
+              </div> : <></>}
                 <Header />
-                <BrowserRouter>
                     <Books
-                    booksArr = {booksArr.booksArr}
+                    booksArr = {booksArr}
                     />
-                </BrowserRouter>
             </div>
         )
     }
@@ -30,6 +32,7 @@ const mapDispatchToProps = (dispatch) => ({
   const mapStateToProps = (state) => {
     return {
       booksArr: state.booksArr,
+      isLoad : state.isLoad
     };
   };
   

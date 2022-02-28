@@ -1,5 +1,8 @@
 const BOOK_SEARCH = 'BOOK_SEARCH';
-const FOCUS = 'FOCUS'
+const FOCUS = 'FOCUS';
+const CHANGE_LOADING = 'CHANGE_LOADING'
+const LOAD_MORE = 'LOAD_MORE'
+const ACTUAL_INFO = 'ACTUAL_INFO'
 
 function searchBooks(books) {
     return {
@@ -19,6 +22,28 @@ function focus (id) {
   };
 }
 
+function loadMore (newBooks){
+  return {
+    type: LOAD_MORE,
+    payload: {
+      newBooks: newBooks
+    },
+  };
+}
+
+function changeLoading (){
+  return {type : CHANGE_LOADING}
+}
+
+function actualInfo (info){
+  return {
+    type: ACTUAL_INFO,
+    payload: {
+      info: info
+    },
+  };
+}
 
 
-export{BOOK_SEARCH , FOCUS , searchBooks , focus} 
+
+export{BOOK_SEARCH , FOCUS , CHANGE_LOADING, LOAD_MORE, ACTUAL_INFO, searchBooks , focus , changeLoading , loadMore , actualInfo} 
