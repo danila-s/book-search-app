@@ -2,15 +2,17 @@ import React from "react";
 import './Header.css'
 import {getBookList} from '../../api/api'
 import { connect } from "react-redux";
-import {searchBooks} from '../../redux/actions'
+import {searchBooks , focus} from '../../redux/actions'
 
 
 class Header extends React.Component{
 
     state = {
         categories : ['all', 'art', 'biography', 'computers', 'history', 'medical', 'poetry'],
-        sorting : ['relevance' , 'newest'],
+        sortingArr : ['relevance' , 'newest'],
         string : '',
+        focusCategory :'',
+        sorting : 'relevance',
         totalItems : 0
     }
 
@@ -19,31 +21,51 @@ class Header extends React.Component{
     }
 
     getNewBooks = () => {
-        const {string} = this.state
-        getBookList(string)
+        
+        const {string , focusCategory , sorting} = this.state
+        getBookList(string , focusCategory , sorting) 
         .then(data => {
             this.setState({totalItems : data.totalItems})
             this.props.searchBooks(data.items)
+            this.props.focus('')
         })
+        
     }
 
+    newCategory = (e) => {
+        if(e.target.value === 'all'){
+            this.setState({focusCategory : ''} ,this.getNewBooks )
+        }else {
+            this.setState({focusCategory : e.target.value} ,this.getNewBooks )
+    }
+    }
+
+    newSorting = (e) => {
+        if(this.state.string){
+            this.setState({sorting : e.target.value} ,this.getNewBooks )
+        }else {
+            this.setState({sorting : e.target.value})
+        }
+    }
+   
+
     render(){
-        const{categories , sorting , totalItems} = this.state
+        const{categories , sorting , totalItems , sortingArr} = this.state
         return(
             <header>
                 <p className="title">Search for books</p>
                 <input onChange={this.changeInput}/> 
                 <button onClick={this.getNewBooks}></button>
                 <div className="selects">
-                    Categories<select>
+                    Categories<select onChange={this.newCategory}>
                         {categories.map((item , index) => {
-                            return <option key={index}>{item}</option>
+                            return <option value={item} key={index}>{item}</option>
                         })}
 
                     </select>
-                    Sorting by<select>
-                        {sorting.map((item , index) => {
-                            return <option key={index}>{item}</option>
+                    Sorting by<select onChange={this.newSorting}>
+                        {sortingArr.map((item , index) => {
+                            return <option value={item} key={index}>{item}</option>
                         })}
                     </select>
                 </div>
@@ -56,6 +78,7 @@ class Header extends React.Component{
 
 const mapDispatchToProps = (dispatch) => ({
     searchBooks: (data) => dispatch(searchBooks(data)),
+    focus : (id) => dispatch(focus(id))
   });
   
   const mapStateToProps = (state) => {

@@ -1,8 +1,8 @@
-import { BOOK_SEARCH } from "./actions";
+import { BOOK_SEARCH , FOCUS } from "./actions";
 
 const initialState = {
     booksArr: [],
-    focusArr : []
+    focus : ''
 };
 
 function reducer(state = initialState, action) {
@@ -16,7 +16,10 @@ function reducer(state = initialState, action) {
             const newState = {...state , booksArr : books}
             return newState;
 
-
+        case FOCUS :
+            const { id } = action.payload;
+            const newStateId = {...state , focus : id}
+            return newStateId;
 
             
     }

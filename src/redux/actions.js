@@ -1,4 +1,5 @@
 const BOOK_SEARCH = 'BOOK_SEARCH';
+const FOCUS = 'FOCUS'
 
 function searchBooks(books) {
     return {
@@ -9,5 +10,15 @@ function searchBooks(books) {
     };
   }
 
+function focus (id) {
+  return {
+    type: FOCUS,
+    payload: {
+      id: id
+    },
+  };
+}
 
-export{BOOK_SEARCH , searchBooks}
+
+
+export{BOOK_SEARCH , FOCUS , searchBooks , focus} 

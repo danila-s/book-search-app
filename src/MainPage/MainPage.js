@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../components/Header/Header'
 import {connect} from 'react-redux'
 import Books from '../Books/Books'
+import { BrowserRouter } from 'react-router-dom';
 
 
 class MainPage extends React.Component {
@@ -9,11 +10,14 @@ class MainPage extends React.Component {
     render () {
         const booksArr = this.props
         return (
+            
             <div>
-            <Header />
-            <Books
-            booksArr = {booksArr.booksArr}
-             />
+                <Header />
+                <BrowserRouter>
+                    <Books
+                    booksArr = {booksArr.booksArr}
+                    />
+                </BrowserRouter>
             </div>
         )
     }
