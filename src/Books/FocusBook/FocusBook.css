@@ -63,3 +63,42 @@
     width: 250px;
     margin-top: 30px;
 }
+
+@Media (max-width : 856px){
+    .main-focus{
+        flex-direction: column;
+        padding: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 250px;
+        padding: 10px;
+    }
+
+    .second-image-container {
+        background-color: lightgray;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .info-container{
+        padding: 40px 30px;
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+
+@Media (max-width : 525px){
+    .description{
+        width: 80%;
+    }
+}

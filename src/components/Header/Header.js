@@ -32,6 +32,7 @@ class Header extends React.Component{
         const {string , focusCategory , sorting} = this.state
         const {startIndex , results} = this.props
         this.props.changeLoading();
+        console.log(string , focusCategory , sorting ,startIndex , results )
         getBookList(string , focusCategory , sorting , startIndex , results) 
         .then(data => {
             this.setState({totalItems : data.totalItems})

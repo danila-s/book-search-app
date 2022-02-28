@@ -19,7 +19,7 @@ function reducer(state = initialState, action) {
         
         case BOOK_SEARCH : 
             const { books } = action.payload;
-            const newState = {...state , booksArr : books , startIndex : state.startIndex + 30}
+            const newState = {...state , booksArr : books , startIndex : 0}
             return newState;
 
         case FOCUS :

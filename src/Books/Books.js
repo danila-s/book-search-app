@@ -12,7 +12,7 @@ class Books extends React.Component {
     loadMore = () => {
         const {string , focusCategory , sorting , startIndex , results} = this.props;
         this.props.changeLoading();
-        getBookList(string , focusCategory , sorting , startIndex , results)
+        getBookList(string , focusCategory , sorting , startIndex + 30 , results)
         .then(data => {
             this.props.loadMore(data.items);
             this.props.changeLoading();
