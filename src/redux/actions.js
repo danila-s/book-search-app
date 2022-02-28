@@ -5,15 +5,15 @@ const LOAD_MORE = 'LOAD_MORE'
 const ACTUAL_INFO = 'ACTUAL_INFO'
 
 function searchBooks(books) {
-    return {
-      type: BOOK_SEARCH,
-      payload: {
-        books: books
-      },
-    };
-  }
+  return {
+    type: BOOK_SEARCH,
+    payload: {
+      books: books
+    },
+  };
+}
 
-function focus (id) {
+function focus(id) {
   return {
     type: FOCUS,
     payload: {
@@ -22,7 +22,7 @@ function focus (id) {
   };
 }
 
-function loadMore (newBooks){
+function loadMore(newBooks) {
   return {
     type: LOAD_MORE,
     payload: {
@@ -31,11 +31,11 @@ function loadMore (newBooks){
   };
 }
 
-function changeLoading (){
-  return {type : CHANGE_LOADING}
+function changeLoading() {
+  return { type: CHANGE_LOADING }
 }
 
-function actualInfo (info){
+function actualInfo(info) {
   return {
     type: ACTUAL_INFO,
     payload: {
@@ -46,4 +46,4 @@ function actualInfo (info){
 
 
 
-export{BOOK_SEARCH , FOCUS , CHANGE_LOADING, LOAD_MORE, ACTUAL_INFO, searchBooks , focus , changeLoading , loadMore , actualInfo} 
+export { BOOK_SEARCH, FOCUS, CHANGE_LOADING, LOAD_MORE, ACTUAL_INFO, searchBooks, focus, changeLoading, loadMore, actualInfo } 
