@@ -32,7 +32,6 @@ class Header extends React.Component {
         const { string, focusCategory, sorting } = this.state
         const { startIndex, results } = this.props
         this.props.changeLoading();
-        console.log(string, focusCategory, sorting, startIndex, results)
         getBookList(string, focusCategory, sorting, startIndex, results)
             .then(data => {
                 this.setState({ totalItems: data.totalItems })
@@ -70,13 +69,17 @@ class Header extends React.Component {
         return (
             <header>
                 <p className="title">Search for books</p>
-                <div className="search-container">
-                    <input type="search" onChange={this.changeInput} onKeyDown={(e) => {
+                <div className="input-container">
+                    <div className="border-of-input">
+                        <svg width="18" class="search-pic" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={this.getNewBooks}>
+                            <path d="M17 17L12.0962 12.0962M12.0962 12.0962C13.2725 10.9199 14 9.29493 14 7.5C14 3.91015 11.0899 1 7.5 1C3.91015 1 1 3.91015 1 7.5C1 11.0899 3.91015 14 7.5 14C9.29493 14 10.9199 13.2725 12.0962 12.0962Z" stroke="#768298" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <input placeholder="Найти..." onChange={this.changeInput} onKeyDown={(e) => {
                         if (e.key === 'Enter') {
                             this.getNewBooks();
                         }
                     }} />
-                    <button onClick={this.getNewBooks}></button>
+                    </div>
                 </div>
                 <div className="selects">
                     <div className="select">
