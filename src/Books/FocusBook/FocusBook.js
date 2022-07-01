@@ -1,17 +1,14 @@
 import React from "react";
 import './FocusBook.css';
 import { connect } from 'react-redux';
-import { focus } from '../../redux/actions'
+
 
 class FocusBook extends React.Component {
 
-    back = () => {
-        this.props.focus('')
-    }
+
 
     render() {
         const { book } = this.props;
-        //пришлось уезжать из города , поэтому пока тут костыль с back кнопкой , а не нормальный роутинг.
         return (
             <div className="main-focus">
                 <div className="image-container">
@@ -41,7 +38,7 @@ class FocusBook extends React.Component {
 
 
 const mapDispatchToProps = (dispatch) => ({
-    focus: (id) => dispatch(focus(id)),
+
 });
 
 const mapStateToProps = (state) => {

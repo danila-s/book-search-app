@@ -25,7 +25,7 @@ class Books extends React.Component {
     render() {
         const { booksArr, focus } = this.props;
 
-        if (focus.length === 0) {
+ 
             return (
                 <div>
                     <div className="books">
@@ -39,16 +39,8 @@ class Books extends React.Component {
                     </div>
                     {booksArr.length > 0 && <button className="more-button" onClick={this.loadMore}>Загрузить еще</button>}
                 </div>
-            )
-        } else {
-            return (
-                <div>
-                    <FocusBook
-                        book={booksArr[focus]}
-                    />
-                </div>
-            )
-        }
+            )       
+        
     }
 }
 
@@ -59,7 +51,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => {
     return {
-        focus: state.focus,
         booksArr: state.booksArr,
         startIndex: state.startIndex,
         results: state.results,

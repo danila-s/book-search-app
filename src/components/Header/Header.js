@@ -2,7 +2,8 @@ import React from "react";
 import './Header.css'
 import { getBookList } from '../../api/api'
 import { connect } from "react-redux";
-import { searchBooks, focus, changeLoading, actualInfo } from '../../redux/actions'
+import { searchBooks, changeLoading, actualInfo } from '../../redux/actions'
+
 
 
 
@@ -36,7 +37,6 @@ class Header extends React.Component {
             .then(data => {
                 this.setState({ totalItems: data.totalItems })
                 this.props.searchBooks(data.items)
-                this.props.focus('');
                 this.actualInfo();
                 this.props.changeLoading();
             }).catch(err => {
@@ -68,17 +68,17 @@ class Header extends React.Component {
         const { categories, totalItems, sortingArr } = this.state
         return (
             <header>
-                <p className="title">Search for books</p>
+                <p className="title" href='/hello'>Search for books</p>
                 <div className="input-container">
                     <div className="border-of-input">
-                        <svg width="18" class="search-pic" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={this.getNewBooks}>
-                            <path d="M17 17L12.0962 12.0962M12.0962 12.0962C13.2725 10.9199 14 9.29493 14 7.5C14 3.91015 11.0899 1 7.5 1C3.91015 1 1 3.91015 1 7.5C1 11.0899 3.91015 14 7.5 14C9.29493 14 10.9199 13.2725 12.0962 12.0962Z" stroke="#768298" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                        <svg width="18" className="search-pic" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={this.getNewBooks}>
+                            <path d="M17 17L12.0962 12.0962M12.0962 12.0962C13.2725 10.9199 14 9.29493 14 7.5C14 3.91015 11.0899 1 7.5 1C3.91015 1 1 3.91015 1 7.5C1 11.0899 3.91015 14 7.5 14C9.29493 14 10.9199 13.2725 12.0962 12.0962Z" stroke="#768298" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                         <input placeholder="Найти..." onChange={this.changeInput} onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                            this.getNewBooks();
-                        }
-                    }} />
+                            if (e.key === 'Enter') {
+                                this.getNewBooks();
+                            }
+                        }} />
                     </div>
                 </div>
                 <div className="selects">
@@ -108,7 +108,6 @@ class Header extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
     searchBooks: (data) => dispatch(searchBooks(data)),
-    focus: (id) => dispatch(focus(id)),
     changeLoading: () => dispatch(changeLoading()),
     actualInfo: (info) => dispatch(actualInfo(info))
 });

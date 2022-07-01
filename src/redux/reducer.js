@@ -1,8 +1,7 @@
-import { BOOK_SEARCH, FOCUS, CHANGE_LOADING, LOAD_MORE, ACTUAL_INFO } from "./actions";
+import { BOOK_SEARCH,  CHANGE_LOADING, LOAD_MORE, ACTUAL_INFO } from "./actions";
 
 const initialState = {
     booksArr: [],
-    focus: '',
     isLoad: false,
     startIndex: 0,
     results: 30,
@@ -21,11 +20,6 @@ function reducer(state = initialState, action) {
             const { books } = action.payload;
             const newState = { ...state, booksArr: books, startIndex: 0 }
             return newState;
-
-        case FOCUS:
-            const { id } = action.payload;
-            const newStateId = { ...state, focus: id }
-            return newStateId;
 
         case CHANGE_LOADING:
             const newLoadStatus = !state.isLoad;
