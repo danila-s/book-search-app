@@ -24,8 +24,6 @@ class Books extends React.Component {
 
     render() {
         const { booksArr, focus } = this.props;
-
- 
             return (
                 <div>
                     <div className="books">

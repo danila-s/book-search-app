@@ -7,4 +7,10 @@ async function getBookList(value, categorie, sorting, startIndex, results) {
    return data
 }
 
-export { getBookList }
+async function getOneBookInfo(id) {
+   const response = await fetch(`https://www.googleapis.com/books/v1/volumes/${id}`)
+   const data = await response.json();
+   return data
+}
+
+export { getBookList, getOneBookInfo }

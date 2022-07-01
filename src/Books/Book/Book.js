@@ -12,7 +12,7 @@ class Book extends React.Component {
         const { bookInfo } = this.props
         return (
             <Link to={'book/' + bookInfo.id}>
-                <span className="book" onClick={this.focus}>
+                <span className="book" >
                     {'imageLinks' in bookInfo.volumeInfo && <img src={bookInfo.volumeInfo.imageLinks.thumbnail} /> || <img src="https://v1.iconsearch.ru/uploads/icons/token/128x128/search.png" />}
                     <p className="categories">{bookInfo.volumeInfo.categories}</p>
                     <p className="title-book">{bookInfo.volumeInfo.title}</p>

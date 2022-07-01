@@ -3,13 +3,15 @@ import Header from '../components/Header/Header'
 import { connect } from 'react-redux'
 import Books from '../Books/Books'
 import './MainPage.css'
+import { Route, Routes } from 'react-router-dom'
+import TestComponent from '../TestComponent'
 
 
 
 class MainPage extends React.Component {
 
   render() {
-    const { booksArr, isLoad } = this.props
+    const { isLoad } = this.props
 
     return (
       <div>
@@ -17,9 +19,14 @@ class MainPage extends React.Component {
           <p className='loading-text'>Loading ...</p>
         </div> : <></>}
         <Header />
-        <Books
-          booksArr={booksArr}
-        />
+        <Routes>
+          <Route path="/" exact
+            element={<Books />}
+          />
+          <Route path="/book/:id" exact
+            element={<TestComponent />}
+          />
+        </Routes>
       </div>
     )
   }

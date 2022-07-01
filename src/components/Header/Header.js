@@ -6,7 +6,6 @@ import { searchBooks, changeLoading, actualInfo } from '../../redux/actions'
 
 
 
-
 class Header extends React.Component {
 
     state = {
@@ -17,6 +16,7 @@ class Header extends React.Component {
         sorting: 'relevance',
         totalItems: 0
     }
+
 
     changeInput = (e) => {
         this.setState({ string: e.target.value })
@@ -43,8 +43,6 @@ class Header extends React.Component {
                 console.log(err);
                 alert('Что-то пошло не так , обновите страницу.');
             })
-
-
     }
 
     newCategory = (e) => {

@@ -10,14 +10,7 @@ import TestComponent from './TestComponent';
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" exact
-          element={<MainPage />}
-        />
-        <Route path="/book/:id" 
-          element={<TestComponent/>}
-        />
-      </Routes>
+      <MainPage />
     </div>
   );
 }

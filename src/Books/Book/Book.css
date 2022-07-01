@@ -5,6 +5,7 @@
     background-color: lightgray;
     margin: 30px;
     padding: 20px 0px;
+    color: black;   
 }
 
 .categories{
@@ -13,10 +14,7 @@
     margin-bottom: 10px;
 }
 
-.title-book{
-    font-weight: bold;
-    margin-bottom: 10px;
-}
+
 
 .book:hover{
     position: relative;
@@ -26,4 +24,13 @@
 
 .authors {
     opacity: 60%;
+}
+
+.title-book{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+a{
+    text-decoration: none;
 }
