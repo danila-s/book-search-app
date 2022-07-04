@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Books from '../Books/Books'
 import './MainPage.css'
 import { Route, Routes } from 'react-router-dom'
-import TestComponent from '../TestComponent'
+import BookPage from '../BookPage/BookPage'
 
 
 
@@ -24,7 +24,7 @@ class MainPage extends React.Component {
             element={<Books />}
           />
           <Route path="/book/:id" exact
-            element={<TestComponent />}
+            element={<BookPage />}
           />
         </Routes>
       </div>

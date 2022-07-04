@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getOneBookInfo } from '../src/api/api'
+import { getOneBookInfo } from '../api/api'
+import './BookPage.css'
 
 
 
 
-function TestComponent() {
+function BookPage() {
 
     const [bookInfo, setBookInfo] = useState(0);
     const params = useParams();
@@ -55,4 +56,4 @@ function TestComponent() {
 }
 
 
-export default TestComponent
+export default BookPage;

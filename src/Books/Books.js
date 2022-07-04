@@ -2,7 +2,6 @@ import React from "react";
 import Book from "./Book/Book";
 import './Books.css'
 import { connect } from 'react-redux';
-import FocusBook from "./FocusBook/FocusBook";
 import { loadMore, changeLoading } from '../redux/actions';
 import { getBookList } from '../api/api'
 
