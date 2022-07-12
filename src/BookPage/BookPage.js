@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getOneBookInfo } from '../api/api'
-import './BookPage.css'
+import './BookPage.css';
 
 
 
@@ -11,7 +11,6 @@ function BookPage() {
     const [bookInfo, setBookInfo] = useState(0);
     const params = useParams();
     const bookId = params.id;
-    const navigate = useNavigate();
 
     useEffect(() => {
         getOneBookInfo(bookId)
@@ -27,9 +26,7 @@ function BookPage() {
         return (
             <div className="main-focus">
                 <div className="image-container">
-                    <div className="second-image-container">
-                        {'imageLinks' in bookInfo.volumeInfo && <img className="image" src={bookInfo.volumeInfo.imageLinks.thumbnail} /> || <img src="https://v1.iconsearch.ru/uploads/icons/token/128x128/search.png" />}
-                    </div>
+                    {'imageLinks' in bookInfo.volumeInfo && <img className="image" src={bookInfo.volumeInfo.imageLinks.thumbnail} /> || <img src="https://v1.iconsearch.ru/uploads/icons/token/128x128/search.png" />}
                 </div>
                 <div className="info-container">
                     {'categories' in bookInfo.volumeInfo && <div className="focus-categories-container"> {bookInfo.volumeInfo.categories.map((item, index) => {

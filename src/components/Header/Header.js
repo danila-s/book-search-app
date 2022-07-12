@@ -2,9 +2,8 @@ import React from "react";
 import './Header.css'
 import { getBookList } from '../../api/api'
 import { connect } from "react-redux";
-import { searchBooks, changeLoading, actualInfo } from '../../redux/actions'
-
-
+import { searchBooks, changeLoading, actualInfo } from '../../redux/actions';
+import { withNavigation } from '../Header/withNavigation'
 
 class Header extends React.Component {
 
@@ -16,6 +15,10 @@ class Header extends React.Component {
         sorting: 'relevance',
         totalItems: 0
     }
+
+    goToHomePage = () => {
+        this.props.navigate("/");
+      };
 
 
     changeInput = (e) => {
@@ -29,7 +32,6 @@ class Header extends React.Component {
     }
 
     getNewBooks = () => {
-
         const { string, focusCategory, sorting } = this.state
         const { startIndex, results } = this.props
         this.props.changeLoading();
@@ -38,6 +40,7 @@ class Header extends React.Component {
                 this.setState({ totalItems: data.totalItems })
                 this.props.searchBooks(data.items)
                 this.actualInfo();
+                this.goToHomePage();
                 this.props.changeLoading();
             }).catch(err => {
                 console.log(err);
@@ -120,4 +123,4 @@ const mapStateToProps = (state) => {
 
 const functionFromConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default functionFromConnect(Header);
+export default functionFromConnect(withNavigation(Header));
